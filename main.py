@@ -42,7 +42,7 @@ X = res[2]
 Y = res[1]
 
 # plot states of dynamic system
-if True:
+if False:
     plt.figure()
     plt.plot(T, X[:, 0], label='x1')
     plt.plot(T, X[:, 1], label='x2')
@@ -52,7 +52,7 @@ if True:
 
 # add noise to the measurement
 Y_noised = Y + W
-if True:
+if False:
     plt.figure()
     plt.plot(T, Y_noised, label='noised output')
     plt.title("Noised measurement")
@@ -96,7 +96,7 @@ for i in range(0, samples - 1):
 if True:
     plt.figure()
     plt.plot(T, XP[:,0],label='x1')
-    plt.plot(T, XP[:, 0],label='x2')
+    plt.plot(T, XP[:, 1],label='x2')
     plt.title("Apriori estimate")
     plt.grid()
     plt.legend()
