@@ -20,6 +20,7 @@ T = np.linspace(0, Tf, samples)
 
 # prepare all input signals - control U and noised W and V
 U = np.full(samples, 1)
+#U = np.sin(T)
 W = np.random.normal(0, 1, samples)
 V = np.array([np.random.normal(0, 0.0, samples),
               np.random.normal(0, 0.0, samples)])
@@ -42,7 +43,7 @@ X = res[2]
 Y = res[1]
 
 # plot states of dynamic system
-if False:
+if True:
     plt.figure()
     plt.plot(T, X[:, 0], label='x1')
     plt.plot(T, X[:, 1], label='x2')
@@ -52,7 +53,7 @@ if False:
 
 # add noise to the measurement
 Y_noised = Y + W
-if False:
+if True:
     plt.figure()
     plt.plot(T, Y_noised, label='noised output')
     plt.title("Noised measurement")
@@ -76,8 +77,6 @@ XP = Xc.T
 
 # main loop of discrete-time simulation
 for i in range(0, samples - 1):
-    # Kalman filter
-    temp = C.T
     Xp = Ad @ np.array([XC[-1]]).T + Bd * U[i]
     Pn = Ad @ Pc[-2:] @ A.T + Q
 
@@ -87,7 +86,6 @@ for i in range(0, samples - 1):
     Xc = Xp + K @ e
     P = Pn - K * S @ K.T
 
-    # Add calculated values to XC and XP 
     XC = np.vstack([XC, Xc.T])
     XP = np.vstack([XP, Xp.T])
     Pc = np.vstack([Pc, P])
