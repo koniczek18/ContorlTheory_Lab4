@@ -95,20 +95,26 @@ for i in range(0, samples - 1):
 # plot the results
 if True:
     plt.figure()
-    plt.plot(T, XP)
+    plt.plot(T, XP[:,0],label='x1')
+    plt.plot(T, XP[:, 0],label='x2')
     plt.title("Apriori estimate")
     plt.grid()
+    plt.legend()
 
 if True:
     plt.figure()
-    plt.plot(T, XC)
+    plt.plot(T, XC[:,0],label='x1')
+    plt.plot(T, XC[:, 1], label='x2')
     plt.title("Aposteriori estimate")
     plt.grid()
+    plt.legend()
 
 if True:
     plt.figure()
-    plt.plot(T, X - XC)
+    plt.plot(T, X[:,0]- XC[:,0],label='x1')
+    plt.plot(T, X[:, 1] - XC[:, 1], label='x2')
     plt.title("Estimation errors")
     plt.grid()
+    plt.legend()
 
 plt.show()
