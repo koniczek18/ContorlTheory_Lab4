@@ -42,21 +42,22 @@ X = res[2]
 Y = res[1]
 
 # plot states of dynamic system
-plt.figure()
-plt.plot(T, X[:, 0], label='x1')
-plt.plot(T, X[:, 1], label='x2')
-plt.title("Real plant")
-plt.grid()
-plt.legend()
+if True:
+    plt.figure()
+    plt.plot(T, X[:, 0], label='x1')
+    plt.plot(T, X[:, 1], label='x2')
+    plt.title("Real plant")
+    plt.grid()
+    plt.legend()
 
 # add noise to the measurement
 Y_noised = Y + W
-
-plt.figure()
-plt.plot(T, Y_noised, label='noised output')
-plt.title("Noised measurement")
-plt.grid()
-plt.legend()
+if True:
+    plt.figure()
+    plt.plot(T, Y_noised, label='noised output')
+    plt.title("Noised measurement")
+    plt.grid()
+    plt.legend()
 
 # calculate matrices A, B, C and D of discrete-time system based on continous system
 Ad, Bd, Cd, Dd, dt = signal.cont2discrete((A, B, C, D), Tp)
@@ -92,18 +93,22 @@ for i in range(0, samples - 1):
     Pc = np.vstack([Pc, P])
 
 # plot the results
-plt.figure()
-plt.plot(T, XP)
-plt.title("Apriori estimate")
-plt.grid()
+if True:
+    plt.figure()
+    plt.plot(T, XP)
+    plt.title("Apriori estimate")
+    plt.grid()
 
-plt.figure()
-plt.plot(T, XC)
-plt.title("Aposteriori estimate")
-plt.grid()
+if True:
+    plt.figure()
+    plt.plot(T, XC)
+    plt.title("Aposteriori estimate")
+    plt.grid()
 
-plt.figure()
-plt.plot(T, X - XC)
-plt.title("Estimation errors")
-plt.grid()
+if True:
+    plt.figure()
+    plt.plot(T, X - XC)
+    plt.title("Estimation errors")
+    plt.grid()
+
 plt.show()
